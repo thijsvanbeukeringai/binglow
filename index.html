@@ -185,7 +185,7 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -305,6 +305,9 @@
 
     .nav-logo img {
       height: 42px;
+      max-width: 45vw;
+      width: auto;
+      object-fit: contain;
       filter: drop-shadow(0 0 10px var(--neon-pink));
     }
 
@@ -463,7 +466,8 @@
     }
 
     .hero-logo img {
-      width: min(290px, 44vw);
+      width: min(290px, 70vw);
+      max-width: calc(100vw - 3rem);
       height: auto;
       display: block;
       filter:
