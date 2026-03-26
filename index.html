@@ -862,9 +862,11 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s ease, opacity 0.4s ease;
       filter: saturate(1.15);
+      background: rgba(191,0,255,0.08);
     }
+    .gallery-item img[data-src] { opacity: 0; }
 
     .gallery-item::after {
       content: '';
@@ -1174,28 +1176,77 @@
         position: absolute;
         top: 70px; left: 0; right: 0;
         background: rgba(6,6,15,0.97);
-        padding: 1.5rem 2rem;
-        gap: 1rem;
+        padding: 1.5rem 1.5rem;
+        gap: 1.2rem;
         border-bottom: 1px solid var(--glass-border);
+        backdrop-filter: blur(18px);
       }
+
+      .nav-links.open a { font-size: 1rem; }
 
       .about-grid,
       .showmasters-layout,
       .booking-inner { grid-template-columns: 1fr; gap: 2rem; }
 
-      .about-img img { height: 320px; }
+      .about-img img,
+      .showmasters-photo img { height: 320px; }
 
       .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
       .gallery-item.big, .gallery-item.wide { grid-column: span 2; }
       .gallery-item.tall { grid-row: span 1; }
 
       .events-grid { grid-template-columns: 1fr; }
+
+      .booking-card { padding: 2rem; }
     }
 
-    @media (max-width: 480px) {
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; }
-      .gallery-item.big { grid-column: span 2; grid-row: span 1; }
-      .section-inner { padding: 4rem 1.25rem; }
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+
+      .hero { padding: 90px 1rem 3rem; min-height: 100svh; }
+      .hero-sub { font-size: 1rem; max-width: 100%; }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 320px;
+      }
+      .hero-actions .btn { text-align: center; justify-content: center; width: 100%; }
+
+      .section-inner { padding: 3.5rem 1rem; }
+
+      .about-features { grid-template-columns: 1fr; }
+      .about-img img,
+      .showmasters-photo img { height: 240px; }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 145px;
+        gap: 6px;
+      }
+      .gallery-item.big,
+      .gallery-item.wide { grid-column: span 2; }
+      .gallery-item.tall { grid-row: span 1; }
+
+      .booking-inner { gap: 1.5rem; }
+      .booking-card { padding: 1.5rem; }
+      .booking-card .btn { width: 100%; justify-content: center; }
+
+      .showmasters-cta { width: 100%; justify-content: center; }
+
+      .section-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+      .showmasters-text h2 { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+
+      .events-grid { grid-template-columns: 1fr; }
+      .event-card { padding: 1.4rem; }
+
+      .footer-links { gap: 1rem; }
+    }
+
+    @media (max-width: 400px) {
+      .gallery-grid { grid-auto-rows: 115px; gap: 4px; }
+      .hero-logo img { width: min(220px, 70vw); }
+      .section-inner { padding: 3rem 0.9rem; }
     }
   </style>
 </head>
@@ -1249,7 +1300,7 @@
   <div class="section-inner">
     <div class="about-grid">
       <div class="about-img reveal">
-        <img src="Brand assets/Hare&Dare_20260208_133548_CrazyBinglowShow_JDH_0283.jpg" alt="Showmaster op het podium tijdens The Crazy Binglow Show" loading="lazy" />
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_133548_CrazyBinglowShow_JDH_0283.jpg" alt="Showmaster op het podium tijdens The Crazy Binglow Show" decoding="async" />
       </div>
       <div class="reveal">
         <span class="section-label">Over de show</span>
@@ -1344,7 +1395,7 @@
     <div class="showmasters-layout">
 
       <div class="showmasters-photo reveal">
-        <img src="Brand assets/Martijn en Thijs.jpg" alt="Martijn en Thijs, showmasters van The Crazy Binglow Show" loading="lazy" />
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Martijn en Thijs.jpg" alt="Martijn en Thijs, showmasters van The Crazy Binglow Show" decoding="async" />
       </div>
 
       <div class="showmasters-text reveal">
@@ -1382,35 +1433,35 @@
     </div>
     <div class="gallery-grid reveal">
       <!-- Row 1: wide + 2 normal -->
-      <div class="gallery-item wide" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_130442_CrazyBinglowShow_JDH_0108.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_124618_CrazyBinglowShow_JDH_0019.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_125557_CrazyBinglowShow_JDH_0050.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
+      <div class="gallery-item wide" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_130442_CrazyBinglowShow_JDH_0108.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_124618_CrazyBinglowShow_JDH_0019.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_125557_CrazyBinglowShow_JDH_0050.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
 
       <!-- Row 1-2: tall on left + 3 normal -->
-      <div class="gallery-item tall" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_131549_CrazyBinglowShow_JDH_0199.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_130646_CrazyBinglowShow_JDH_0131.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_131037_CrazyBinglowShow_JDH_0155.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item wide" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_125937_CrazyBinglowShow_JDH_0079.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
+      <div class="gallery-item tall" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_131549_CrazyBinglowShow_JDH_0199.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_130646_CrazyBinglowShow_JDH_0131.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_131037_CrazyBinglowShow_JDH_0155.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item wide" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_125937_CrazyBinglowShow_JDH_0079.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
 
       <!-- Row 3: big feature + 2 stacked -->
-      <div class="gallery-item big" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_133111_CrazyBinglowShow_JDH_0250.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_131138_CrazyBinglowShow_JDH_0168.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_131807_CrazyBinglowShow_JDH_0212.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_132134_CrazyBinglowShow_JDH_0228.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_131522_CrazyBinglowShow_JDH_0182.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
+      <div class="gallery-item big" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_133111_CrazyBinglowShow_JDH_0250.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_131138_CrazyBinglowShow_JDH_0168.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_131807_CrazyBinglowShow_JDH_0212.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_132134_CrazyBinglowShow_JDH_0228.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_131522_CrazyBinglowShow_JDH_0182.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
 
       <!-- Row 4: 2 normal + wide -->
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_133715_CrazyBinglowShow_JDH_0302.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_134039_CrazyBinglowShow_JDH_0356.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item wide" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_133548_CrazyBinglowShow_JDH_0283.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_133715_CrazyBinglowShow_JDH_0302.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_134039_CrazyBinglowShow_JDH_0356.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item wide" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_133548_CrazyBinglowShow_JDH_0283.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
 
       <!-- Row 5: 4 normal -->
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_134249_CrazyBinglowShow_JDH_0377.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_134307_CrazyBinglowShow_JDH_0386.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_134458_CrazyBinglowShow_JDH_0406.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_130803_CrazyBinglowShow_JDH_0145.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_124702_CrazyBinglowShow_JDH_0027.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="Brand assets/Hare&Dare_20260208_125714_CrazyBinglowShow_JDH_0069.jpg" alt="Binglow Show — The Crazy Binglow Show" loading="lazy" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_134249_CrazyBinglowShow_JDH_0377.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_134307_CrazyBinglowShow_JDH_0386.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_134458_CrazyBinglowShow_JDH_0406.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_130803_CrazyBinglowShow_JDH_0145.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_124702_CrazyBinglowShow_JDH_0027.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="Brand assets/Hare&Dare_20260208_125714_CrazyBinglowShow_JDH_0069.jpg" alt="Binglow Show — The Crazy Binglow Show" decoding="async" /></div>
     </div>
   </div>
 </section>
@@ -1513,9 +1564,12 @@
     };
   }
 
-  for (let i = 0; i < 200; i++) particles.push(randomParticle());
+  const isMobile = window.innerWidth < 768;
+  const PARTICLE_COUNT = isMobile ? 55 : 200;
+  for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(randomParticle());
 
   function drawLines() {
+    if (isMobile) return; /* skip O(n²) lines on mobile */
     const maxDist = 120;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
@@ -1535,6 +1589,13 @@
     }
   }
 
+  let animPaused = false;
+  document.addEventListener('visibilitychange', () => { animPaused = document.hidden; });
+
+  function animLoop() {
+    if (!animPaused) drawParticles();
+    else requestAnimationFrame(animLoop);
+  }
   function drawParticles() {
     ctx.clearRect(0, 0, W, H);
     drawLines();
@@ -1564,9 +1625,30 @@
     }
     ctx.globalAlpha = 1;
     ctx.shadowBlur = 0;
-    requestAnimationFrame(drawParticles);
+    requestAnimationFrame(animPaused ? animLoop : drawParticles);
   }
   drawParticles();
+
+  /* ── Gallery lazy load ── */
+  const lazyImgs = document.querySelectorAll('img[data-src]');
+  function loadImg(img) {
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+    img.style.opacity = '1';
+  }
+  if ('IntersectionObserver' in window) {
+    const lazyObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          loadImg(e.target);
+          lazyObs.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '200px' });
+    lazyImgs.forEach(img => lazyObs.observe(img));
+  } else {
+    lazyImgs.forEach(loadImg);
+  }
 
   /* ── Scroll reveal ── */
   const reveals = document.querySelectorAll('.reveal');
@@ -1577,7 +1659,9 @@
 
   /* ── Lightbox ── */
   function openLightbox(item) {
-    document.getElementById('lightbox-img').src = item.querySelector('img').src;
+    const img = item.querySelector('img');
+    const src = img.dataset.src || img.src;
+    document.getElementById('lightbox-img').src = src;
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
