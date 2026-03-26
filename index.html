@@ -833,6 +833,45 @@
       border: 1px solid rgba(255,255,255,0.1);
     }
 
+    /* ─── VIDEO ─── */
+    .video-section {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 50%, rgba(191,0,255,0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 10% 80%, rgba(0,245,255,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 90% 20%, rgba(255,45,120,0.10) 0%, transparent 60%);
+    }
+
+    .video-wrapper {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      /* Neon glow frame */
+      box-shadow:
+        0 0 0 2px rgba(255,45,120,0.5),
+        0 0 30px rgba(255,45,120,0.35),
+        0 0 80px rgba(191,0,255,0.25),
+        0 0 140px rgba(0,245,255,0.15);
+      animation: videoGlow 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes videoGlow {
+      0%   { box-shadow: 0 0 0 2px rgba(255,45,120,0.5), 0 0 30px rgba(255,45,120,0.35), 0 0 80px rgba(191,0,255,0.25), 0 0 140px rgba(0,245,255,0.15); }
+      50%  { box-shadow: 0 0 0 2px rgba(0,245,255,0.5), 0 0 30px rgba(0,245,255,0.35), 0 0 80px rgba(191,0,255,0.3), 0 0 140px rgba(255,45,120,0.15); }
+      100% { box-shadow: 0 0 0 2px rgba(191,0,255,0.5), 0 0 30px rgba(191,0,255,0.35), 0 0 80px rgba(255,45,120,0.25), 0 0 140px rgba(0,245,255,0.15); }
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+      border-radius: 20px;
+    }
+
     /* ─── GALLERY ─── */
     .gallery-section {
       overflow: hidden;
@@ -1265,6 +1304,7 @@
       }
       /* Disable logo flicker animations on mobile */
       .hero-logo img { animation: none !important; filter: drop-shadow(0 0 16px rgba(255,45,120,0.9)) drop-shadow(0 0 40px rgba(191,0,255,0.7)); }
+      .video-wrapper { animation: none !important; box-shadow: 0 0 0 2px rgba(255,45,120,0.5), 0 0 30px rgba(255,45,120,0.3); }
       /* Remove grid overlay */
       body::before { display: none; }
     }
@@ -1286,6 +1326,7 @@
   </a>
   <ul class="nav-links" id="nav-links">
     <li><a href="#over">Over de show</a></li>
+    <li><a href="#video">Video</a></li>
     <li><a href="#shows">Shows</a></li>
     <li><a href="#fotos">Foto's</a></li>
     <li><a href="#boeken" class="nav-cta">Boeken</a></li>
@@ -1350,6 +1391,27 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROMO VIDEO ── -->
+<section id="video" class="video-section">
+  <div class="section-inner" style="text-align: center;">
+    <div class="reveal">
+      <span class="section-label">Bekijk de show</span>
+      <div class="neon-divider" style="margin: 0 auto 1rem;"></div>
+      <h2 class="section-title">Zie het met <span class="accent">eigen ogen</span></h2>
+      <p class="section-desc" style="margin: 0 auto 3rem;">Neon, glow, muziek en bingo — dit is de Binglow ervaring.</p>
+    </div>
+    <div class="video-wrapper reveal">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/zDY1d_NjJ_w?rel=0&modestbranding=1&color=white"
+        title="The Crazy Binglow Show — Promovideo"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
     </div>
   </div>
 </section>
