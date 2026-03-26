@@ -1044,7 +1044,7 @@
       text-align: center;
     }
 
-    .footer-logo img { height: 48px; filter: drop-shadow(0 0 12px var(--neon-pink)); }
+    .footer-logo img { height: 42px; max-width: 45vw; width: auto; object-fit: contain; filter: drop-shadow(0 0 12px var(--neon-pink)); }
 
     .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
     .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
@@ -1251,6 +1251,22 @@
       .gallery-grid { grid-auto-rows: 115px; gap: 4px; }
       .hero-logo img { width: min(220px, 70vw); }
       .section-inner { padding: 3rem 0.9rem; }
+    }
+
+    /* ─── MOBILE PERFORMANCE ─── */
+    @media (max-width: 768px) {
+      /* Hide canvas — JS also reduces particles, but hiding it saves GPU entirely */
+      #bg-canvas { display: none; }
+      /* Disable orb animations — heavy on mobile GPU */
+      .orb { animation: none !important; }
+      /* Remove backdrop-filter blurs — very slow on mobile */
+      nav, .event-card, .feature-card, .booking-card, .showmasters-cta {
+        backdrop-filter: none !important;
+      }
+      /* Disable logo flicker animations on mobile */
+      .hero-logo img { animation: none !important; filter: drop-shadow(0 0 16px rgba(255,45,120,0.9)) drop-shadow(0 0 40px rgba(191,0,255,0.7)); }
+      /* Remove grid overlay */
+      body::before { display: none; }
     }
   </style>
 </head>
@@ -1569,11 +1585,12 @@
   }
 
   const isMobile = window.innerWidth < 768;
-  const PARTICLE_COUNT = isMobile ? 55 : 200;
-  for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(randomParticle());
+  if (isMobile) {
+    // Skip all canvas work on mobile — CSS hides it too
+  } else {
+    for (let i = 0; i < 200; i++) particles.push(randomParticle());
 
   function drawLines() {
-    if (isMobile) return; /* skip O(n²) lines on mobile */
     const maxDist = 120;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
@@ -1632,6 +1649,7 @@
     requestAnimationFrame(animPaused ? animLoop : drawParticles);
   }
   drawParticles();
+  } /* end !isMobile */
 
   /* ── Gallery lazy load ── */
   const lazyImgs = document.querySelectorAll('img[data-src]');
