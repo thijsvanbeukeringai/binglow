@@ -45,11 +45,13 @@
         "@type": "Organization",
         "@id": "https://www.binglow.nl/#organization",
         "name": "The Crazy Binglow Show",
-        "alternateName": "Binglow",
+        "alternateName": ["Binglow", "Binglow Show", "Crazy Binglow Show"],
         "url": "https://www.binglow.nl",
         "logo": {
           "@type": "ImageObject",
-          "url": "img/Headlogo-website-1536x146.webp"
+          "url": "https://www.binglow.nl/img/Headlogo-website-1536x146.webp",
+          "width": 1536,
+          "height": 146
         },
         "sameAs": ["https://www.instagram.com/binglowshow"],
         "parentOrganization": {
@@ -78,93 +80,169 @@
         "@id": "https://www.binglow.nl/#business",
         "name": "The Crazy Binglow Show",
         "url": "https://www.binglow.nl",
-        "description": "Muziekbingo én nummerbingo in één explosieve neon show — 2,5 tot 3 uur lang feest, spanning en lachen.",
-        "image": "https://binglow.nl/wp-content/uploads/2026/01/showbeoeken-1024x640.jpg",
+        "description": "Muziekbingo én nummerbingo in één explosieve neon show door Martijn & Thijs — 2,5 tot 3 uur lang feest, spanning en lachen in Noord-Brabant.",
+        "image": "https://www.binglow.nl/img/Martijn%20en%20Thijs.webp",
         "telephone": "+31402183000",
         "email": "info@binglow.nl",
         "sameAs": ["https://www.instagram.com/binglowshow"],
+        "areaServed": ["Tilburg", "Eindhoven", "Bergeijk", "Noord-Brabant"],
         "priceRange": "€€"
       },
+
       {
         "@type": "Event",
+        "@id": "https://www.binglow.nl/#event-wevery-tilburg-2026",
         "name": "The Crazy Binglow Show — De Wevery Tilburg",
+        "alternateName": "Binglow Show Tilburg mei 2026",
         "startDate": "2026-05-17T13:00:00+02:00",
         "endDate": "2026-05-17T16:00:00+02:00",
+        "duration": "PT3H",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "The Crazy Binglow Show: muziekbingo + nummerbingo in één spectaculaire neon show. 2,5 tot 3 uur lang feest, spanning en lachen.",
-        "image": "https://binglow.nl/wp-content/uploads/2026/01/glow-dates-1024x640.jpg",
+        "inLanguage": "nl",
+        "isAccessibleForFree": false,
+        "description": "The Crazy Binglow Show komt naar De Wevery in Tilburg op zondag 17 mei 2026! Beleef de beste muziekbingo én nummerbingo van Nederland in één spectaculaire 3-uur durende neon glow show. Showmasters Martijn & Thijs nemen je mee door een wereld van neon, muziek en bingo. Trek je felste outfit aan en win mooie prijzen. Tickets zijn beperkt beschikbaar — wees er snel bij!",
+        "image": [
+          {
+            "@type": "ImageObject",
+            "url": "https://www.binglow.nl/img/Martijn%20en%20Thijs.webp",
+            "width": 1200,
+            "height": 800
+          }
+        ],
         "location": {
           "@type": "Place",
           "name": "De Wevery",
-          "address": { "@type": "PostalAddress", "addressLocality": "Tilburg", "addressCountry": "NL" }
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Pieter Vreedeplein 172",
+            "addressLocality": "Tilburg",
+            "addressRegion": "Noord-Brabant",
+            "postalCode": "5038 BW",
+            "addressCountry": "NL"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 51.5553,
+            "longitude": 5.0815
+          }
         },
         "organizer": { "@id": "https://www.binglow.nl/#organization" },
         "performer": [
-          { "@type": "Person", "name": "Martijn" },
-          { "@type": "Person", "name": "Thijs" }
+          { "@type": "Person", "name": "Martijn", "jobTitle": "Showmaster" },
+          { "@type": "Person", "name": "Thijs", "jobTitle": "Showmaster" }
         ],
         "offers": {
           "@type": "Offer",
-          "url": "https://shop.simpleticket.eu/event/lANy0qP6",
+          "url": "https://shop.simpleticket.eu/event/dAGxMowm",
+          "name": "Ticket The Crazy Binglow Show Tilburg",
           "availability": "https://schema.org/InStock",
           "validFrom": "2026-01-01",
-          "priceCurrency": "EUR"
-        }
+          "priceCurrency": "EUR",
+          "category": "primary"
+        },
+        "keywords": "binglow show tilburg, muziekbingo tilburg, bingo show tilburg, de wevery tilburg, neon show tilburg, entertainment tilburg, bingo avond tilburg, show tilburg 2026"
       },
+
       {
         "@type": "Event",
+        "@id": "https://www.binglow.nl/#event-goudenleeuw-bergeijk-2026",
         "name": "The Crazy Binglow Show — De Gouden Leeuw Bergeijk",
+        "alternateName": "Binglow Show Bergeijk mei 2026",
         "startDate": "2026-05-29T19:00:00+02:00",
         "endDate": "2026-05-29T22:00:00+02:00",
+        "duration": "PT3H",
+        "doorTime": "2026-05-29T19:00:00+02:00",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "The Crazy Binglow Show: muziekbingo + nummerbingo in één spectaculaire neon show. 2,5 tot 3 uur lang feest, spanning en lachen.",
-        "image": "https://binglow.nl/wp-content/uploads/2026/01/glow-dates-1024x640.jpg",
+        "inLanguage": "nl",
+        "isAccessibleForFree": false,
+        "description": "The Crazy Binglow Show staat op vrijdag 29 mei 2026 in De Gouden Leeuw in Bergeijk! De meest spectaculaire muziekbingo én nummerbingo show van Noord-Brabant. Showmasters Martijn & Thijs zorgen voor een onvergetelijke avond vol neon, glow, muziek en bingo. Deuren open om 19:00 uur. Kom in je felste outfit en maak kans op mooie prijzen!",
+        "image": [
+          {
+            "@type": "ImageObject",
+            "url": "https://www.binglow.nl/img/Martijn%20en%20Thijs.webp",
+            "width": 1200,
+            "height": 800
+          }
+        ],
         "location": {
           "@type": "Place",
           "name": "De Gouden Leeuw",
-          "address": { "@type": "PostalAddress", "addressLocality": "Bergeijk", "addressCountry": "NL" }
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Hof 6",
+            "addressLocality": "Bergeijk",
+            "addressRegion": "Noord-Brabant",
+            "postalCode": "5571 CC",
+            "addressCountry": "NL"
+          }
         },
         "organizer": { "@id": "https://www.binglow.nl/#organization" },
         "performer": [
-          { "@type": "Person", "name": "Martijn" },
-          { "@type": "Person", "name": "Thijs" }
+          { "@type": "Person", "name": "Martijn", "jobTitle": "Showmaster" },
+          { "@type": "Person", "name": "Thijs", "jobTitle": "Showmaster" }
         ],
         "offers": {
           "@type": "Offer",
           "url": "https://shop.simpleticket.eu/event/lANy0qP6",
+          "name": "Ticket The Crazy Binglow Show Bergeijk",
           "availability": "https://schema.org/InStock",
           "validFrom": "2026-01-01",
-          "priceCurrency": "EUR"
-        }
+          "priceCurrency": "EUR",
+          "category": "primary"
+        },
+        "keywords": "binglow show bergeijk, muziekbingo bergeijk, bingo show bergeijk, de gouden leeuw bergeijk, neon show bergeijk, entertainment bergeijk, bingo avond bergeijk, show bergeijk 2026"
       },
+
       {
         "@type": "Event",
+        "@id": "https://www.binglow.nl/#event-stadsbrouwerij-eindhoven-2026",
         "name": "The Crazy Binglow Show — Stadsbrouwerij Eindhoven",
+        "alternateName": "Binglow Show Eindhoven mei 2026",
         "startDate": "2026-05-31T13:00:00+02:00",
         "endDate": "2026-05-31T16:00:00+02:00",
+        "duration": "PT3H",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "description": "The Crazy Binglow Show: muziekbingo + nummerbingo in één spectaculaire neon show. 2,5 tot 3 uur lang feest, spanning en lachen.",
-        "image": "https://binglow.nl/wp-content/uploads/2026/01/glow-dates-1024x640.jpg",
+        "inLanguage": "nl",
+        "isAccessibleForFree": false,
+        "description": "The Crazy Binglow Show is op zondag 31 mei 2026 te gast in de Stadsbrouwerij Eindhoven! Geniet van de meest explosieve muziekbingo én nummerbingo show van Eindhoven en omgeving. Een complete middag vol neon glow, meezingen, spelen en winnen. Showmasters Martijn & Thijs staan garant voor 3 uur non-stop entertainment. Bestel nu je tickets voordat ze uitverkocht zijn!",
+        "image": [
+          {
+            "@type": "ImageObject",
+            "url": "https://www.binglow.nl/img/Martijn%20en%20Thijs.webp",
+            "width": 1200,
+            "height": 800
+          }
+        ],
         "location": {
           "@type": "Place",
           "name": "Stadsbrouwerij Eindhoven",
-          "address": { "@type": "PostalAddress", "addressLocality": "Eindhoven", "addressCountry": "NL" }
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bleekweg 1",
+            "addressLocality": "Eindhoven",
+            "addressRegion": "Noord-Brabant",
+            "postalCode": "5611 CZ",
+            "addressCountry": "NL"
+          }
         },
         "organizer": { "@id": "https://www.binglow.nl/#organization" },
         "performer": [
-          { "@type": "Person", "name": "Martijn" },
-          { "@type": "Person", "name": "Thijs" }
+          { "@type": "Person", "name": "Martijn", "jobTitle": "Showmaster" },
+          { "@type": "Person", "name": "Thijs", "jobTitle": "Showmaster" }
         ],
         "offers": {
           "@type": "Offer",
           "url": "https://shop.simpleticket.eu/event/MP60qDwz",
+          "name": "Ticket The Crazy Binglow Show Eindhoven",
           "availability": "https://schema.org/InStock",
           "validFrom": "2026-01-01",
-          "priceCurrency": "EUR"
-        }
+          "priceCurrency": "EUR",
+          "category": "primary"
+        },
+        "keywords": "binglow show eindhoven, muziekbingo eindhoven, bingo show eindhoven, stadsbrouwerij eindhoven, neon show eindhoven, entertainment eindhoven, bingo avond eindhoven, show eindhoven 2026"
       }
     ]
   }
