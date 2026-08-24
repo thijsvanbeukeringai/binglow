@@ -36,21 +36,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://shop.simpleticket.eu" />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet" /></noscript>
+
+  <!-- ── LCP: hero-beelden vroeg laden ── -->
+  <link rel="preload" as="image" href="img/Martijn%20en%20Thijs.webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="img/Binglow%20Show%20Def.webp" />
 
   <!-- ── Meta Pixel ──
-       Vul hieronder het Pixel-ID in (Meta Events Manager > Gegevensbronnen).
-       Zolang het ID leeg is, wordt er niets geladen of gemeten. -->
+       De fbq-stub staat direct klaar zodat events nooit verloren gaan; het zware
+       fbevents.js-script laadt pas bij de eerste interactie of na 3 seconden,
+       zodat het de laadtijd (LCP) niet in de weg zit. -->
   <script>
     window.META_PIXEL_ID = '1629769988231914';
     if (window.META_PIXEL_ID) {
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      !function(f,b){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window,document);
       fbq('init', window.META_PIXEL_ID);
       fbq('track', 'PageView');
+
+      (function () {
+        var loaded = false;
+        function loadPixelScript() {
+          if (loaded) return;
+          loaded = true;
+          var t = document.createElement('script');
+          t.async = true;
+          t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+          document.head.appendChild(t);
+          ['scroll', 'click', 'touchstart', 'keydown'].forEach(function (ev) {
+            window.removeEventListener(ev, loadPixelScript);
+          });
+        }
+        ['scroll', 'click', 'touchstart', 'keydown'].forEach(function (ev) {
+          window.addEventListener(ev, loadPixelScript, { once: true, passive: true });
+        });
+        window.addEventListener('load', function () { setTimeout(loadPixelScript, 3000); });
+      })();
     }
   </script>
 
@@ -690,6 +714,56 @@
       border: 0;
       display: block;
     }
+
+    .video-facade {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      background: var(--bg-raise);
+    }
+
+    .video-facade img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-facade::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 7, 20, 0.25);
+      transition: background 0.25s;
+    }
+
+    .video-facade:hover::after,
+    .video-facade:focus-visible::after { background: rgba(11, 7, 20, 0.1); }
+
+    .video-facade:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+    .play-badge {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 76px; height: 76px;
+      border-radius: 50%;
+      background: var(--pink);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 40px rgba(255, 45, 120, 0.5);
+      transition: transform 0.25s var(--ease-out);
+      z-index: 1;
+    }
+
+    .play-badge svg { margin-left: 4px; }
+
+    .video-facade:hover .play-badge { transform: translate(-50%, -50%) scale(1.08); }
 
     /* ─────────────── AGENDA ─────────────── */
     .agenda-section {
@@ -1348,13 +1422,12 @@
       <p class="lede">Eén minuut Binglow zegt meer dan duizend woorden.</p>
     </div>
     <div class="video-frame" data-reveal>
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/zDY1d_NjJ_w?rel=0&modestbranding=1&color=white"
-        title="The Crazy Binglow Show | Promovideo"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        loading="lazy"
-      ></iframe>
+      <button class="video-facade" id="video-facade" type="button" aria-label="Promovideo afspelen">
+        <img src="img/Hare&Dare_20260208_133548_CrazyBinglowShow_JDH_0283.webp" alt="Voorbeeld van de Binglow promovideo: Martijn en Thijs op het podium" loading="lazy" decoding="async" />
+        <span class="play-badge" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </button>
     </div>
   </div>
 </section>
@@ -1709,6 +1782,19 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
   });
+
+  /* ── Video facade: YouTube laadt pas na een klik ── */
+  const facade = document.getElementById('video-facade');
+  if (facade) {
+    facade.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/zDY1d_NjJ_w?rel=0&modestbranding=1&color=white&autoplay=1';
+      iframe.title = 'The Crazy Binglow Show | Promovideo';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      facade.replaceWith(iframe);
+    });
+  }
 
   /* ── Year ── */
   document.getElementById('year').textContent = new Date().getFullYear();
