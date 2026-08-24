@@ -1,0 +1,38 @@
+# The Crazy Binglow Show, robots.txt
+# Standaard zoekmachines en alle overige crawlers: volledig toegestaan.
+User-agent: *
+Allow: /
+
+# AI-crawlers expliciet toegestaan, gewenst voor vindbaarheid in AI-zoekmachines
+# (ChatGPT, Perplexity, Claude en Google AI Overviews).
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://www.binglow.nl/sitemap.xml
