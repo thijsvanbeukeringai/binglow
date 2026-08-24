@@ -41,8 +41,8 @@
   <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet" /></noscript>
 
   <!-- ── LCP: hero-beelden vroeg laden ── -->
-  <link rel="preload" as="image" href="img/Martijn%20en%20Thijs.webp" fetchpriority="high" />
-  <link rel="preload" as="image" href="img/Binglow%20Show%20Def.webp" />
+  <link rel="preload" as="image" imagesrcset="img/martijn-en-thijs-640.webp 640w, img/Martijn%20en%20Thijs.webp 1200w" imagesizes="100vw" fetchpriority="high" />
+  <link rel="preload" as="image" href="img/binglow-logo-600.webp" />
 
   <!-- ── Meta Pixel ──
        De fbq-stub staat direct klaar zodat events nooit verloren gaan; het zware
@@ -1340,11 +1340,11 @@
 <!-- ── HERO ── -->
 <header class="hero">
   <div class="hero-media">
-    <img src="img/Martijn en Thijs.webp" alt="Showmasters Martijn en Thijs op het podium tijdens The Crazy Binglow Show, met een uitzinnig publiek vol glowsticks" fetchpriority="high" />
+    <img src="img/Martijn en Thijs.webp" srcset="img/martijn-en-thijs-640.webp 640w, img/Martijn%20en%20Thijs.webp 1200w" sizes="100vw" width="1200" height="800" alt="Showmasters Martijn en Thijs op het podium tijdens The Crazy Binglow Show, met een uitzinnig publiek vol glowsticks" fetchpriority="high" />
   </div>
   <div class="hero-center">
     <h1 class="sr-only">The Crazy Binglow Show: Muziekbingo &amp; Nummerbingo Show</h1>
-    <img class="hero-logo" src="img/Binglow Show Def.webp" alt="" aria-hidden="true" />
+    <img class="hero-logo" src="img/binglow-logo-600.webp" width="602" height="830" alt="" aria-hidden="true" />
     <p class="hero-title">Muziekbingo én nummerbingo in <strong>één spectaculaire liveshow</strong>. Drie uur meezingen, meespelen en winnen met showmasters Martijn &amp; Thijs.</p>
     <div class="hero-actions">
       <a href="#agenda" class="btn btn-primary">Bestel tickets</a>
