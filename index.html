@@ -38,6 +38,22 @@
   <link rel="preconnect" href="https://shop.simpleticket.eu" />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet" />
 
+  <!-- ── Meta Pixel ──
+       Vul hieronder het Pixel-ID in (Meta Events Manager > Gegevensbronnen).
+       Zolang het ID leeg is, wordt er niets geladen of gemeten. -->
+  <script>
+    window.META_PIXEL_ID = '1629769988231914';
+    if (window.META_PIXEL_ID) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', window.META_PIXEL_ID);
+      fbq('track', 'PageView');
+    }
+  </script>
+
   <!-- ── Structured Data (JSON-LD) ── -->
   <script type="application/ld+json">
   {
@@ -1513,6 +1529,26 @@
 
   /* ── Year ── */
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ── Meta Pixel events (alleen actief als de pixel geladen is) ── */
+  if (window.fbq) {
+    document.querySelectorAll('a[href*="shop.simpleticket.eu"]').forEach((a) => {
+      a.addEventListener('click', () => {
+        const row = a.closest('.agenda-row');
+        const venue = row ? row.querySelector('.venue')?.textContent.trim() : null;
+        fbq('track', 'InitiateCheckout', {
+          content_name: venue ? 'Tickets ' + venue : 'Tickets Crazy Binglow Show',
+          content_category: 'Tickets'
+        });
+      });
+    });
+    document.querySelectorAll('a[href^="mailto:info@binglow.nl"]').forEach((a) => {
+      a.addEventListener('click', () => {
+        const isBooking = (a.getAttribute('href') || '').includes('Aanvraag');
+        fbq('track', isBooking ? 'Lead' : 'Contact');
+      });
+    });
+  }
 </script>
 </body>
 </html>
