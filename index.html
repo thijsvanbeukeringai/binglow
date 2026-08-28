@@ -78,6 +78,37 @@
     }
   </script>
 
+  <!-- ── Google tag (Google Ads conversies, optioneel GA4) ──
+       Vul GOOGLE_ADS_ID in (AW-XXXXXXXXXX, uit Google Ads > Tools > Google tag)
+       en de conversielabels uit Google Ads > Doelen > Conversies (vorm: AW-XXXXXXXXXX/AbCdEfGh).
+       GA4_ID is optioneel (G-XXXXXXXXXX). Zolang alles leeg is, wordt er niets geladen. -->
+  <script>
+    window.GOOGLE_ADS_ID = "";
+    window.GA4_ID = "";
+    window.GOOGLE_CONVERSIONS = { ticketClick: "", lead: "" };
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    (function () {
+      var ids = [window.GOOGLE_ADS_ID, window.GA4_ID].filter(Boolean);
+      if (!ids.length) return;
+      gtag("js", new Date());
+      ids.forEach(function (id) { gtag("config", id); });
+      var loaded = false;
+      function loadGtag() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + ids[0];
+        document.head.appendChild(s);
+      }
+      ["scroll", "click", "touchstart", "keydown"].forEach(function (ev) {
+        window.addEventListener(ev, loadGtag, { once: true, passive: true });
+      });
+      window.addEventListener("load", function () { setTimeout(loadGtag, 3000); });
+    })();
+  </script>
+
   <!-- ── Structured Data (JSON-LD) ── -->
   <script type="application/ld+json">
   {
@@ -1985,6 +2016,26 @@
 
   /* ── Year ── */
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ── Google Ads / GA4 events (alleen actief als er een ID is ingevuld) ── */
+  if (window.GOOGLE_ADS_ID || window.GA4_ID) {
+    const conv = window.GOOGLE_CONVERSIONS || {};
+    document.querySelectorAll('a[href*="shop.simpleticket.eu"]').forEach((a) => {
+      a.addEventListener("click", () => {
+        const row = a.closest(".agenda-row");
+        const venue = row ? row.querySelector(".venue")?.textContent.trim() : "Binglow";
+        if (conv.ticketClick) gtag("event", "conversion", { send_to: conv.ticketClick });
+        gtag("event", "ticket_click", { event_category: "tickets", event_label: venue });
+      });
+    });
+    document.querySelectorAll('a[href^="mailto:info@binglow.nl"]').forEach((a) => {
+      a.addEventListener("click", () => {
+        const isBooking = (a.getAttribute("href") || "").includes("Aanvraag");
+        if (isBooking && conv.lead) gtag("event", "conversion", { send_to: conv.lead });
+        gtag("event", isBooking ? "generate_lead" : "contact");
+      });
+    });
+  }
 
   /* ── Meta Pixel events (alleen actief als de pixel geladen is) ── */
   if (window.fbq) {
