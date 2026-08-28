@@ -1517,7 +1517,7 @@
       <li><a href="#agenda">Agenda</a></li>
       <li><a href="#fotos">Foto's</a></li>
       <li><a href="#boeken">Boeken</a></li>
-      <li><a href="#agenda" class="btn btn-primary btn-sm">Tickets</a></li>
+      <li><a data-track="ticket_intent_menu" data-label="Menuknop Tickets" data-place="menu" href="#agenda" class="btn btn-primary btn-sm">Tickets</a></li>
     </ul>
   </div>
 </nav>
@@ -1534,11 +1534,11 @@
     <img class="hero-logo" src="img/binglow-logo-600.webp" width="602" height="830" alt="" aria-hidden="true" />
     <p class="hero-title">Muziekbingo én nummerbingo in <strong>één spectaculaire liveshow</strong>. Drie uur meezingen, meespelen en winnen met showmasters Martijn &amp; Thijs.</p>
     <div class="hero-actions">
-      <a href="#agenda" class="btn btn-primary">Bestel tickets</a>
+      <a data-track="ticket_intent_hero" data-label="Heroknop Bestel tickets" data-place="hero" href="#agenda" class="btn btn-primary">Bestel tickets</a>
       <a href="#boeken" class="btn btn-ghost">Boek de show</a>
     </div>
   </div>
-  <a href="https://shop.simpleticket.eu/event/ZPm2NLAW" target="_blank" rel="noopener" class="hero-bar" aria-label="Volgende show: zaterdag 19 september in Grand Café de Wildeman, Eindhoven. Bestel tickets">
+  <a data-track="ticket_click_herobalk_19sep" data-label="Hero-balk 19 sep Grand Café de Wildeman" data-place="hero-balk" href="https://shop.simpleticket.eu/event/ZPm2NLAW" target="_blank" rel="noopener" class="hero-bar" aria-label="Volgende show: zaterdag 19 september in Grand Café de Wildeman, Eindhoven. Bestel tickets">
     <div class="hero-bar-inner">
       <span class="bar-label"><span class="dot" aria-hidden="true"></span>Volgende show</span>
       <span class="bar-info"><strong>Zaterdag 19 september</strong> · Grand Café de Wildeman, Eindhoven · deuren open 19:00</span>
@@ -1637,7 +1637,7 @@
           <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span></div>
         </div>
         <div class="agenda-action">
-          <a href="https://shop.simpleticket.eu/event/ZPm2NLAW" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
+          <a data-track="ticket_click_19sep_wildeman" data-label="19 sep Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/ZPm2NLAW" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
       <li class="agenda-row upcoming" data-reveal>
@@ -1650,7 +1650,7 @@
           <div class="meta"><span>Bergeijk</span><span>Deuren open 19:00</span></div>
         </div>
         <div class="agenda-action">
-          <a href="https://shop.simpleticket.eu/event/dAGxoewm" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
+          <a data-track="ticket_click_25sep_goudenleeuw" data-label="25 sep De Gouden Leeuw Bergeijk" data-place="agenda" href="https://shop.simpleticket.eu/event/dAGxoewm" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
       <li class="agenda-row upcoming" data-reveal>
@@ -1663,7 +1663,7 @@
           <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span></div>
         </div>
         <div class="agenda-action">
-          <a href="https://shop.simpleticket.eu/event/BAOnyOPO" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
+          <a data-track="ticket_click_17okt_wildeman" data-label="17 okt Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/BAOnyOPO" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
       <li class="agenda-row upcoming" data-reveal>
@@ -1676,7 +1676,7 @@
           <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span></div>
         </div>
         <div class="agenda-action">
-          <a href="https://shop.simpleticket.eu/event/2P1LKrpo" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
+          <a data-track="ticket_click_7nov_wildeman" data-label="7 nov Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/2P1LKrpo" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
       <li class="agenda-row upcoming" data-reveal>
@@ -1689,7 +1689,7 @@
           <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span></div>
         </div>
         <div class="agenda-action">
-          <a href="https://shop.simpleticket.eu/event/mw56dMpL" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
+          <a data-track="ticket_click_19dec_wildeman" data-label="19 dec Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/mw56dMpL" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
       <li class="agenda-row past" data-reveal>
@@ -2024,12 +2024,16 @@
   /* ── Google Ads / GA4 events (alleen actief als er een ID is ingevuld) ── */
   if (window.GOOGLE_ADS_ID || window.GA4_ID) {
     const conv = window.GOOGLE_CONVERSIONS || {};
-    document.querySelectorAll('a[href*="shop.simpleticket.eu"]').forEach((a) => {
+    // Elke ticketknop krijgt zijn eigen gebeurtenisnaam (data-track), zodat je in
+    // GA4 > Rapporten > Gebeurtenissen per knop ziet hoe vaak erop gedrukt is.
+    document.querySelectorAll("a[data-track]").forEach((a) => {
       a.addEventListener("click", () => {
-        const row = a.closest(".agenda-row");
-        const venue = row ? row.querySelector(".venue")?.textContent.trim() : "Binglow";
-        if (conv.ticketClick) gtag("event", "conversion", { send_to: conv.ticketClick });
-        gtag("event", "ticket_click", { event_category: "tickets", event_label: venue });
+        const params = { show: a.dataset.label, button_location: a.dataset.place, event_category: "tickets" };
+        gtag("event", a.dataset.track, params);
+        if (a.dataset.track.startsWith("ticket_click")) {
+          gtag("event", "ticket_click", params);
+          if (conv.ticketClick) gtag("event", "conversion", { send_to: conv.ticketClick });
+        }
       });
     });
     document.querySelectorAll('a[href^="mailto:info@binglow.nl"]').forEach((a) => {
@@ -2045,10 +2049,8 @@
   if (window.fbq) {
     document.querySelectorAll('a[href*="shop.simpleticket.eu"]').forEach((a) => {
       a.addEventListener('click', () => {
-        const row = a.closest('.agenda-row');
-        const venue = row ? row.querySelector('.venue')?.textContent.trim() : null;
         fbq('track', 'InitiateCheckout', {
-          content_name: venue ? 'Tickets ' + venue : 'Tickets Crazy Binglow Show',
+          content_name: a.dataset.label || 'Tickets Crazy Binglow Show',
           content_category: 'Tickets'
         });
       });
