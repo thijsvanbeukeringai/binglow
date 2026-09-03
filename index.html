@@ -1538,7 +1538,7 @@
       <a href="#boeken" class="btn btn-ghost">Boek de show</a>
     </div>
   </div>
-  <a data-track="ticket_click_herobalk_19sep" data-label="Hero-balk 19 sep Grand Café de Wildeman" data-place="hero-balk" href="https://shop.simpleticket.eu/event/ZPm2NLAW" target="_blank" rel="noopener" class="hero-bar" aria-label="Volgende show: zaterdag 19 september in Grand Café de Wildeman, Eindhoven. Bestel tickets">
+  <a data-track="ticket_click_herobalk_19sep" data-price="16.95" data-label="Hero-balk 19 sep Grand Café de Wildeman" data-place="hero-balk" href="https://shop.simpleticket.eu/event/ZPm2NLAW" target="_blank" rel="noopener" class="hero-bar" aria-label="Volgende show: zaterdag 19 september in Grand Café de Wildeman, Eindhoven. Bestel tickets">
     <div class="hero-bar-inner">
       <span class="bar-label"><span class="dot" aria-hidden="true"></span>Volgende show</span>
       <span class="bar-info"><strong>Zaterdag 19 september</strong> · Grand Café de Wildeman, Eindhoven · deuren open 19:00</span>
@@ -1637,7 +1637,7 @@
           <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span></div>
         </div>
         <div class="agenda-action">
-          <a data-track="ticket_click_19sep_wildeman" data-label="19 sep Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/ZPm2NLAW" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
+          <a data-track="ticket_click_19sep_wildeman" data-price="16.95" data-label="19 sep Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/ZPm2NLAW" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
       <li class="agenda-row upcoming" data-reveal>
@@ -1650,7 +1650,7 @@
           <div class="meta"><span>Bergeijk</span><span>Deuren open 19:00</span></div>
         </div>
         <div class="agenda-action">
-          <a data-track="ticket_click_25sep_goudenleeuw" data-label="25 sep De Gouden Leeuw Bergeijk" data-place="agenda" href="https://shop.simpleticket.eu/event/dAGxoewm" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
+          <a data-track="ticket_click_25sep_goudenleeuw" data-price="19.95" data-label="25 sep De Gouden Leeuw Bergeijk" data-place="agenda" href="https://shop.simpleticket.eu/event/dAGxoewm" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
       <li class="agenda-row upcoming" data-reveal>
@@ -1663,7 +1663,7 @@
           <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span></div>
         </div>
         <div class="agenda-action">
-          <a data-track="ticket_click_17okt_wildeman" data-label="17 okt Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/BAOnyOPO" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
+          <a data-track="ticket_click_17okt_wildeman" data-price="16.95" data-label="17 okt Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/BAOnyOPO" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
       <li class="agenda-row upcoming" data-reveal>
@@ -1676,7 +1676,7 @@
           <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span></div>
         </div>
         <div class="agenda-action">
-          <a data-track="ticket_click_7nov_wildeman" data-label="7 nov Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/2P1LKrpo" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
+          <a data-track="ticket_click_7nov_wildeman" data-price="16.95" data-label="7 nov Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/2P1LKrpo" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
       <li class="agenda-row upcoming" data-reveal>
@@ -1689,7 +1689,7 @@
           <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span></div>
         </div>
         <div class="agenda-action">
-          <a data-track="ticket_click_19dec_wildeman" data-label="19 dec Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/mw56dMpL" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
+          <a data-track="ticket_click_19dec_wildeman" data-price="16.95" data-label="19 dec Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/mw56dMpL" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
       <li class="agenda-row past" data-reveal>
@@ -2051,7 +2051,9 @@
       a.addEventListener('click', () => {
         fbq('track', 'InitiateCheckout', {
           content_name: a.dataset.label || 'Tickets Crazy Binglow Show',
-          content_category: 'Tickets'
+          content_category: 'Tickets',
+          value: parseFloat(a.dataset.price) || 0,
+          currency: 'EUR'
         });
       });
     });
