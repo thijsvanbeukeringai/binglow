@@ -1627,7 +1627,7 @@
       <p class="lede">Bestel je tickets op tijd: Op = op!</p>
     </div>
     <ul class="agenda-list">
-      <li class="agenda-row upcoming" data-reveal>
+      <li class="agenda-row upcoming" data-date="2026-09-19" data-reveal>
         <div class="agenda-date">
           <span class="day">19</span>
           <span class="month">sep '26</span>
@@ -1640,7 +1640,7 @@
           <a data-track="ticket_click_19sep_wildeman" data-price="16.95" data-label="19 sep Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/ZPm2NLAW" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
-      <li class="agenda-row upcoming" data-reveal>
+      <li class="agenda-row upcoming" data-date="2026-09-25" data-reveal>
         <div class="agenda-date">
           <span class="day">25</span>
           <span class="month">sep '26</span>
@@ -1653,7 +1653,7 @@
           <a data-track="ticket_click_25sep_goudenleeuw" data-price="19.95" data-label="25 sep De Gouden Leeuw Bergeijk" data-place="agenda" href="https://shop.simpleticket.eu/event/dAGxoewm" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
-      <li class="agenda-row upcoming" data-reveal>
+      <li class="agenda-row upcoming" data-date="2026-10-17" data-reveal>
         <div class="agenda-date">
           <span class="day">17</span>
           <span class="month">okt '26</span>
@@ -1666,7 +1666,7 @@
           <a data-track="ticket_click_17okt_wildeman" data-price="16.95" data-label="17 okt Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/BAOnyOPO" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
-      <li class="agenda-row upcoming" data-reveal>
+      <li class="agenda-row upcoming" data-date="2026-11-07" data-reveal>
         <div class="agenda-date">
           <span class="day">7</span>
           <span class="month">nov '26</span>
@@ -1679,7 +1679,7 @@
           <a data-track="ticket_click_7nov_wildeman" data-price="16.95" data-label="7 nov Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/2P1LKrpo" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
-      <li class="agenda-row upcoming" data-reveal>
+      <li class="agenda-row upcoming" data-date="2026-12-19" data-reveal>
         <div class="agenda-date">
           <span class="day">19</span>
           <span class="month">dec '26</span>
@@ -2020,6 +2020,45 @@
 
   /* ── Year ── */
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ── Agenda: gespeelde shows naar 'Gespeeld', eerstvolgende show in de hero-balk ── */
+  (() => {
+    const today = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Amsterdam' });
+    const rows = [...document.querySelectorAll('.agenda-row.upcoming[data-date]')];
+    const played = rows.filter((li) => li.dataset.date < today).reverse();
+    played.forEach((li) => {
+      li.classList.replace('upcoming', 'past');
+      const status = document.createElement('div');
+      status.className = 'agenda-status';
+      status.textContent = 'Gespeeld';
+      li.querySelector('.agenda-action').replaceWith(status);
+    });
+    const firstPast = document.querySelector('.agenda-row.past:not([data-date])');
+    if (firstPast) firstPast.before(...played);
+    else if (played.length) played[0].parentElement.append(...played);
+    const bar = document.querySelector('.hero-bar');
+    if (!bar) return;
+    const next = rows.find((li) => li.dataset.date >= today);
+    if (!next) { bar.remove(); return; }
+    const link = next.querySelector('a[href*="shop.simpleticket.eu"]');
+    if (!link || bar.href === link.href) return;
+
+    const date = new Date(next.dataset.date + 'T12:00:00')
+      .toLocaleDateString('nl-NL', { weekday: 'long', day: 'numeric', month: 'long' });
+    const venue = next.querySelector('.venue').textContent;
+    const [city, doors] = [...next.querySelectorAll('.meta span')].map((s) => s.textContent);
+    const strong = document.createElement('strong');
+    strong.textContent = date.charAt(0).toUpperCase() + date.slice(1);
+    bar.querySelector('.bar-info').replaceChildren(
+      strong, ` · ${venue}, ${city}` + (doors ? ` · ${doors.toLowerCase()}` : '')
+    );
+    bar.href = link.href;
+    bar.dataset.label = 'Hero-balk ' + link.dataset.label;
+    bar.dataset.track = link.dataset.track.replace('ticket_click_', 'ticket_click_herobalk_');
+    if (link.dataset.price) bar.dataset.price = link.dataset.price;
+    else delete bar.dataset.price;
+    bar.setAttribute('aria-label', `Volgende show: ${date} in ${venue}, ${city}. Bestel tickets`);
+  })();
 
   /* ── Google Ads / GA4 events (alleen actief als er een ID is ingevuld) ── */
   if (window.GOOGLE_ADS_ID || window.GA4_ID) {
