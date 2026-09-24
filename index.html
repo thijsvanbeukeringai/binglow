@@ -305,7 +305,7 @@
           "@type": "Offer",
           "url": "https://shop.simpleticket.eu/event/BAOnyOPO",
           "name": "Ticket The Crazy Binglow Show Eindhoven 17 oktober",
-          "availability": "https://schema.org/InStock",
+          "availability": "https://schema.org/LimitedAvailability",
           "validFrom": "2026-08-26",
           "priceCurrency": "EUR",
           "category": "primary"
@@ -353,7 +353,7 @@
           "@type": "Offer",
           "url": "https://shop.simpleticket.eu/event/2P1LKrpo",
           "name": "Ticket The Crazy Binglow Show Eindhoven 7 november",
-          "availability": "https://schema.org/InStock",
+          "availability": "https://schema.org/SoldOut",
           "validFrom": "2026-08-27",
           "priceCurrency": "EUR",
           "category": "primary"
@@ -401,7 +401,7 @@
           "@type": "Offer",
           "url": "https://shop.simpleticket.eu/event/mw56dMpL",
           "name": "Ticket The Crazy Binglow Show Eindhoven 19 december",
-          "availability": "https://schema.org/InStock",
+          "availability": "https://schema.org/LimitedAvailability",
           "validFrom": "2026-08-27",
           "priceCurrency": "EUR",
           "category": "primary"
@@ -1029,6 +1029,11 @@
       margin-top: 0.2rem;
     }
 
+    .agenda-info .meta .last-tickets {
+      color: var(--pink);
+      font-weight: 700;
+    }
+
     .agenda-status {
       font-size: 0.82rem;
       font-weight: 700;
@@ -1647,7 +1652,7 @@
         </div>
         <div class="agenda-info">
           <div class="venue">Grand Café de Wildeman</div>
-          <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span></div>
+          <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span><span class="last-tickets">Laatste tickets</span></div>
         </div>
         <div class="agenda-action">
           <a data-track="ticket_click_17okt_wildeman" data-price="16.95" data-label="17 okt Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/BAOnyOPO" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
@@ -1662,9 +1667,7 @@
           <div class="venue">Grand Café de Wildeman</div>
           <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span></div>
         </div>
-        <div class="agenda-action">
-          <a data-track="ticket_click_7nov_wildeman" data-price="16.95" data-label="7 nov Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/2P1LKrpo" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
-        </div>
+        <div class="agenda-status">Uitverkocht</div>
       </li>
       <li class="agenda-row upcoming" data-date="2026-12-19" data-reveal>
         <div class="agenda-date">
@@ -1673,7 +1676,7 @@
         </div>
         <div class="agenda-info">
           <div class="venue">Grand Café de Wildeman</div>
-          <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span></div>
+          <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:00 – 23:00</span><span class="last-tickets">Laatste tickets</span></div>
         </div>
         <div class="agenda-action">
           <a data-track="ticket_click_19dec_wildeman" data-price="16.95" data-label="19 dec Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/mw56dMpL" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
@@ -2018,14 +2021,14 @@
       const status = document.createElement('div');
       status.className = 'agenda-status';
       status.textContent = 'Gespeeld';
-      li.querySelector('.agenda-action').replaceWith(status);
+      li.querySelector('.agenda-action, .agenda-status').replaceWith(status);
     });
     const firstPast = document.querySelector('.agenda-row.past:not([data-date])');
     if (firstPast) firstPast.before(...played);
     else if (played.length) played[0].parentElement.append(...played);
     const bar = document.querySelector('.hero-bar');
     if (!bar) return;
-    const next = rows.find((li) => li.dataset.date >= today);
+    const next = rows.find((li) => li.dataset.date >= today && li.querySelector('a[href*="shop.simpleticket.eu"]'));
     if (!next) { bar.remove(); return; }
     const link = next.querySelector('a[href*="shop.simpleticket.eu"]');
     if (!link || bar.href === link.href) return;
