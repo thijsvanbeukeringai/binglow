@@ -409,6 +409,54 @@
         "keywords": "binglow show eindhoven december, muziekbingo eindhoven, bingo show eindhoven, grand cafe de wildeman eindhoven, de wildeman eindhoven, neon show eindhoven, bingo avond eindhoven, show eindhoven 2026"
       },
       {
+        "@type": "Event",
+        "@id": "https://www.binglow.nl/#event-wildeman-eindhoven-jan-2027",
+        "name": "The Crazy Binglow Show in Grand Café de Wildeman, Eindhoven (januari)",
+        "alternateName": "Binglow Show Eindhoven januari 2027",
+        "startDate": "2027-01-23T20:30:00+01:00",
+        "endDate": "2027-01-23T22:30:00+01:00",
+        "duration": "PT2H",
+        "doorTime": "2027-01-23T19:00:00+01:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "inLanguage": "nl",
+        "isAccessibleForFree": false,
+        "description": "The Crazy Binglow Show is op zaterdag 23 januari 2027 opnieuw te gast in Grand Café de Wildeman in Eindhoven! Muziekbingo én nummerbingo in één spectaculaire neon show met showmasters Martijn & Thijs. Deuren open om 19:00 uur, de show start om 20:30 uur. Tickets zijn nu te bestellen.",
+        "image": [
+          {
+            "@type": "ImageObject",
+            "url": "https://www.binglow.nl/img/Martijn%20en%20Thijs.webp",
+            "width": 1200,
+            "height": 800
+          }
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Grand Café de Wildeman",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Eindhoven",
+            "addressRegion": "Noord-Brabant",
+            "addressCountry": "NL"
+          }
+        },
+        "organizer": { "@id": "https://www.binglow.nl/#organization" },
+        "performer": [
+          { "@type": "Person", "name": "Martijn", "jobTitle": "Showmaster" },
+          { "@type": "Person", "name": "Thijs", "jobTitle": "Showmaster" }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://shop.simpleticket.eu/event/4AYJeNwW",
+          "name": "Ticket The Crazy Binglow Show Eindhoven 23 januari",
+          "availability": "https://schema.org/InStock",
+          "validFrom": "2026-10-12",
+          "priceCurrency": "EUR",
+          "category": "primary"
+        },
+        "keywords": "binglow show eindhoven januari, muziekbingo eindhoven, bingo show eindhoven, grand cafe de wildeman eindhoven, de wildeman eindhoven, neon show eindhoven, bingo avond eindhoven, show eindhoven 2027"
+      },
+      {
         "@type": "FAQPage",
         "@id": "https://www.binglow.nl/#faq",
         "mainEntity": [
@@ -425,7 +473,7 @@
             "name": "Waar en wanneer zijn de shows?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "De eerstvolgende show is op zaterdag 17 oktober 2026 in Grand Café de Wildeman in Eindhoven (deuren open 19:00 uur, show van 20:00 tot 22:30 uur). Op zaterdag 7 november (show van 20:30 tot 23:00 uur) en zaterdag 19 december 2026 (show van 20:00 tot 22:30 uur) volgen nog twee edities in Grand Café de Wildeman, telkens met de deuren open om 19:00 uur. De shows van 17 oktober en 7 november zijn uitverkocht; voor 19 december zijn de laatste tickets te bestellen. Alle actuele data staan in de agenda op binglow.nl."
+              "text": "De eerstvolgende show is op zaterdag 17 oktober 2026 in Grand Café de Wildeman in Eindhoven (deuren open 19:00 uur, show van 20:00 tot 22:30 uur). Op zaterdag 7 november (show van 20:30 tot 23:00 uur) en zaterdag 19 december 2026 (show van 20:00 tot 22:30 uur) volgen nog twee edities in Grand Café de Wildeman, telkens met de deuren open om 19:00 uur. De shows van 17 oktober en 7 november zijn uitverkocht; voor 19 december zijn de laatste tickets te bestellen. Op zaterdag 23 januari 2027 staat de eerste show van het nieuwe jaar gepland in Grand Café de Wildeman (deuren open 19:00 uur, show van 20:30 tot 22:30 uur). Alle actuele data staan in de agenda op binglow.nl."
             }
           },
           {
@@ -777,7 +825,17 @@
 
     .hero-bar .bar-info strong { color: var(--ink); font-weight: 700; }
 
-    .hero-bar .btn { flex-shrink: 0; }
+    .hero-bar .btn,
+    .hero-bar .hero-bar-status { flex-shrink: 0; }
+
+    .hero-bar .hero-bar-status {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-faint);
+      white-space: nowrap;
+    }
 
     /* ─────────────── SECTIONS ─────────────── */
     section { position: relative; }
@@ -1474,6 +1532,7 @@
 
       .hero-bar .bar-info { flex: 1 1 100%; font-size: 0.92rem; }
       .hero-bar .btn { width: 100%; }
+      .hero-bar .hero-bar-status { width: 100%; }
 
       .feature-list { grid-template-columns: 1fr; gap: 1.2rem; }
 
@@ -1680,6 +1739,19 @@
           <a data-track="ticket_click_19dec_wildeman" data-price="16.95" data-label="19 dec Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/mw56dMpL" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
+      <li class="agenda-row upcoming" data-date="2027-01-23" data-reveal>
+        <div class="agenda-date">
+          <span class="day">23</span>
+          <span class="month">jan '27</span>
+        </div>
+        <div class="agenda-info">
+          <div class="venue">Grand Café de Wildeman</div>
+          <div class="meta"><span>Eindhoven</span><span>Deuren open 19:00</span><span>Show 20:30 – 22:30</span></div>
+        </div>
+        <div class="agenda-action">
+          <a data-track="ticket_click_23jan_wildeman" data-price="16.95" data-label="23 jan Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/4AYJeNwW" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
+        </div>
+      </li>
       <li class="agenda-row past" data-reveal>
         <div class="agenda-date">
           <span class="day">31</span>
@@ -1796,7 +1868,7 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
             </span>
           </summary>
-          <p class="faq-answer">De eerstvolgende show is op zaterdag 17 oktober 2026 in Grand Café de Wildeman in Eindhoven (deuren open 19:00 uur, show van 20:00 tot 22:30 uur). Op zaterdag 7 november (show van 20:30 tot 23:00 uur) en zaterdag 19 december 2026 (show van 20:00 tot 22:30 uur) volgen nog twee edities in Grand Café de Wildeman, telkens met de deuren open om 19:00 uur. De shows van 17 oktober en 7 november zijn uitverkocht; voor 19 december zijn de laatste tickets te bestellen. Alle actuele data staan in de <a href="#agenda">agenda</a>.</p>
+          <p class="faq-answer">De eerstvolgende show is op zaterdag 17 oktober 2026 in Grand Café de Wildeman in Eindhoven (deuren open 19:00 uur, show van 20:00 tot 22:30 uur). Op zaterdag 7 november (show van 20:30 tot 23:00 uur) en zaterdag 19 december 2026 (show van 20:00 tot 22:30 uur) volgen nog twee edities in Grand Café de Wildeman, telkens met de deuren open om 19:00 uur. De shows van 17 oktober en 7 november zijn uitverkocht; voor 19 december zijn de laatste tickets te bestellen. Op zaterdag 23 januari 2027 staat de eerste show van het nieuwe jaar gepland in Grand Café de Wildeman (deuren open 19:00 uur, show van 20:30 tot 22:30 uur). Alle actuele data staan in de <a href="#agenda">agenda</a>.</p>
         </details>
       </li>
       <li>
@@ -2016,6 +2088,7 @@
     const played = rows.filter((li) => li.dataset.date < today).reverse();
     played.forEach((li) => {
       li.classList.replace('upcoming', 'past');
+      li.querySelector('.last-tickets')?.remove();
       const status = document.createElement('div');
       status.className = 'agenda-status';
       status.textContent = 'Gespeeld';
@@ -2026,10 +2099,9 @@
     else if (played.length) played[0].parentElement.append(...played);
     const bar = document.querySelector('.hero-bar');
     if (!bar) return;
-    const next = rows.find((li) => li.dataset.date >= today && li.querySelector('a[href*="shop.simpleticket.eu"]'));
+    const next = rows.find((li) => li.dataset.date >= today);
     if (!next) { bar.remove(); return; }
     const link = next.querySelector('a[href*="shop.simpleticket.eu"]');
-    if (!link || bar.href === link.href) return;
 
     const date = new Date(next.dataset.date + 'T12:00:00')
       .toLocaleDateString('nl-NL', { weekday: 'long', day: 'numeric', month: 'long' });
@@ -2040,12 +2112,28 @@
     bar.querySelector('.bar-info').replaceChildren(
       strong, ` · ${venue}, ${city}` + (doors ? ` · ${doors.toLowerCase()}` : '')
     );
-    bar.href = link.href;
-    bar.dataset.label = 'Hero-balk ' + link.dataset.label;
-    bar.dataset.track = link.dataset.track.replace('ticket_click_', 'ticket_click_herobalk_');
-    if (link.dataset.price) bar.dataset.price = link.dataset.price;
-    else delete bar.dataset.price;
-    bar.setAttribute('aria-label', `Volgende show: ${date} in ${venue}, ${city}. Bestel tickets`);
+    const action = document.createElement('span');
+    if (link) {
+      action.className = 'btn btn-primary btn-sm';
+      action.textContent = 'Bestel tickets';
+      bar.href = link.href;
+      bar.dataset.label = 'Hero-balk ' + link.dataset.label;
+      bar.dataset.track = link.dataset.track.replace('ticket_click_', 'ticket_click_herobalk_');
+      if (link.dataset.price) bar.dataset.price = link.dataset.price;
+      else delete bar.dataset.price;
+      bar.setAttribute('aria-label', `Volgende show: ${date} in ${venue}, ${city}. Bestel tickets`);
+    } else {
+      // Uitverkocht: geen ticketlink, dus ook geen klikbare balk en geen tracking.
+      action.className = 'hero-bar-status';
+      action.textContent = next.querySelector('.agenda-status')?.textContent || 'Uitverkocht';
+      bar.removeAttribute('href');
+      bar.removeAttribute('target');
+      bar.removeAttribute('aria-label');
+      delete bar.dataset.track;
+      delete bar.dataset.label;
+      delete bar.dataset.price;
+    }
+    bar.querySelector('.btn, .hero-bar-status').replaceWith(action);
   })();
 
   /* ── Google Ads / GA4 events (alleen actief als er een ID is ingevuld) ── */
