@@ -1017,6 +1017,20 @@
       border-bottom: 1px solid var(--line);
     }
 
+    .agenda-group + .agenda-group { margin-top: clamp(2.4rem, 5vw, 3.6rem); }
+
+    .agenda-group-title {
+      max-width: 880px;
+      margin: 0 auto 1rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--ink-faint);
+    }
+
+    .agenda-group-title.komend { color: var(--pink); }
+
     .agenda-list {
       list-style: none;
       display: flex;
@@ -1690,7 +1704,9 @@
       <h2>Agenda</h2>
       <p class="lede">Bestel je tickets op tijd: Op = op!</p>
     </div>
-    <ul class="agenda-list">
+    <div class="agenda-group" id="agenda-komend">
+      <h3 class="agenda-group-title komend">Komende shows</h3>
+      <ul class="agenda-list" id="agenda-komend-lijst">
       <li class="agenda-row upcoming" data-date="2026-09-19" data-reveal>
         <div class="agenda-date">
           <span class="day">19</span>
@@ -1750,6 +1766,11 @@
           <a data-track="ticket_click_23jan_wildeman" data-price="16.95" data-label="23 jan Grand Café de Wildeman Eindhoven" data-place="agenda" href="https://shop.simpleticket.eu/event/4AYJeNwW" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Bestel tickets</a>
         </div>
       </li>
+      </ul>
+    </div>
+    <div class="agenda-group" id="agenda-gespeeld">
+      <h3 class="agenda-group-title">Gespeelde shows</h3>
+      <ul class="agenda-list" id="agenda-gespeeld-lijst">
       <li class="agenda-row past" data-reveal>
         <div class="agenda-date">
           <span class="day">31</span>
@@ -1783,7 +1804,8 @@
         </div>
         <div class="agenda-status">Uitverkocht</div>
       </li>
-    </ul>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -2092,9 +2114,10 @@
       status.textContent = 'Gespeeld';
       li.querySelector('.agenda-action, .agenda-status').replaceWith(status);
     });
-    const firstPast = document.querySelector('.agenda-row.past:not([data-date])');
-    if (firstPast) firstPast.before(...played);
-    else if (played.length) played[0].parentElement.append(...played);
+    document.getElementById('agenda-gespeeld-lijst')?.prepend(...played);
+    document.querySelectorAll('.agenda-group').forEach((groep) => {
+      groep.hidden = !groep.querySelector('.agenda-row');
+    });
     const bar = document.querySelector('.hero-bar');
     if (!bar) return;
     const next = rows.find((li) => li.dataset.date >= today);
